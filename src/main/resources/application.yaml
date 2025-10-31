@@ -49,7 +49,7 @@ spring:
   #         my-oauth2-client:
   #           provider: fhir-api
   #           client-id: LxDbbAgmnJFh037gUbx2vE7doTToYLYRVKOKCyNV
-  #           client-secret: mkxuF2M7546y5RgjkDLSqSWmAtj7ustg19gnFjgcmB6qtgvgWXbwauapRv4Mh68s0Ge5tRtafCk3Aw7UJpGW4pasjnSEdwnyx80aNPB4mvEZN0aJNpEBlh390kApgtWf
+  #           client-secret: xxx
   #           authorization-grant-type: authorization_code
   #           scope: message.read,message.write
   #       provider:

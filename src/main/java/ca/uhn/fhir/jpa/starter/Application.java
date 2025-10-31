@@ -24,6 +24,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Import;
 
+import ca.uhn.fhir.jpa.starter.interceptors.FeastAuthInterceptor;
+
 @ServletComponentScan(basePackageClasses = {RestfulServer.class})
 @SpringBootApplication(exclude = {ThymeleafAutoConfiguration.class})
 @Import({
@@ -54,6 +56,10 @@ public class Application extends SpringBootServletInitializer {
 	@Bean
 	@Conditional(OnEitherVersion.class)
 	public ServletRegistrationBean hapiServletRegistration(RestfulServer restfulServer) {
+		
+		// FeastAuthInterceptor ourInterceptor = new FeastAuthInterceptor();
+		// restfulServer.registerInterceptor(ourInterceptor);
+		
 		ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
 		beanFactory.autowireBean(restfulServer);
 		servletRegistrationBean.setServlet(restfulServer);
