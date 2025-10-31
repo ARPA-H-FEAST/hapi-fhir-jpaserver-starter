@@ -37,6 +37,25 @@ management:
         enabled: true
 
 spring:
+
+  # -------------------------------------------------------------------------------
+  # User 1. Security. See https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html
+  # -------------------------------------------------------------------------------
+  # XXX?
+  # security:
+  #   oauth2:
+  #     client:
+  #       registration:
+  #         my-oauth2-client:
+  #           provider: fhir-api
+  #           client-id: LxDbbAgmnJFh037gUbx2vE7doTToYLYRVKOKCyNV
+  #           client-secret: mkxuF2M7546y5RgjkDLSqSWmAtj7ustg19gnFjgcmB6qtgvgWXbwauapRv4Mh68s0Ge5tRtafCk3Aw7UJpGW4pasjnSEdwnyx80aNPB4mvEZN0aJNpEBlh390kApgtWf
+  #           authorization-grant-type: authorization_code
+  #           scope: message.read,message.write
+  #       provider:
+  #         my-auth-server:
+  #           issuer-uri: http://localhost:8000/oauth/
+
   # -------------------------------------------------------------------------------
   # A. Spring AI — Model Context Protocol (MCP)
   # -------------------------------------------------------------------------------
