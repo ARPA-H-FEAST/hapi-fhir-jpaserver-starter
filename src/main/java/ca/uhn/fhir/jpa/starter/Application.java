@@ -57,8 +57,8 @@ public class Application extends SpringBootServletInitializer {
 	@Conditional(OnEitherVersion.class)
 	public ServletRegistrationBean hapiServletRegistration(RestfulServer restfulServer) {
 		
-		// FeastAuthInterceptor ourInterceptor = new FeastAuthInterceptor();
-		// restfulServer.registerInterceptor(ourInterceptor);
+		FeastAuthInterceptor ourInterceptor = new FeastAuthInterceptor();
+		restfulServer.registerInterceptor(ourInterceptor);
 		
 		ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
 		beanFactory.autowireBean(restfulServer);
