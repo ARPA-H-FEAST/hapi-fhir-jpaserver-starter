@@ -21,7 +21,8 @@ public class oauthCaller {
 
     public int verifyToken(String token) throws IOException, InterruptedException {
 
-        String authUrl = "http://localhost:8000/fhir-api/oauth/userinfo/";
+        String authUrl = "http://smart-server:8000/fhir-api/oauth/userinfo/";
+        // String authUrl = "http://localhost:8000/fhir-api/oauth/userinfo/";
         
         // BodyPublisher bp = BodyPublishers.ofString("{grant_type: client_credentials}");
         // ourLogger.info("===> Posted body: " + bp.toString());
