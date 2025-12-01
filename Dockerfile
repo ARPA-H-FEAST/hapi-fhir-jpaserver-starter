@@ -1,3 +1,4 @@
+# Build with docker build -t hapi-test -f Dockerfile .
 FROM docker.io/library/maven:3.9.9-eclipse-temurin-17 AS build-hapi
 WORKDIR /tmp/hapi-fhir-jpaserver-starter
 
@@ -26,13 +27,17 @@ RUN rm -rf /opt/bitnami/tomcat/webapps/ROOT && \
     chown -R 1001:1001 /opt/bitnami/hapi/data/hapi/lucenefiles && \
     chmod 775 /opt/bitnami/hapi/data/hapi/lucenefiles
 
-RUN mkdir -p /target && chown -R 1001:1001 target
-USER 1001
+# RUN mkdir -p /target && chown -R 1001:1001 target
+# USER 1001
 
-COPY --chown=1001:1001 catalina.properties /opt/bitnami/tomcat/conf/catalina.properties
-COPY --chown=1001:1001 server.xml /opt/bitnami/tomcat/conf/server.xml
-COPY --from=build-hapi --chown=1001:1001 /tmp/hapi-fhir-jpaserver-starter/target/ROOT.war /opt/bitnami/tomcat/webapps/ROOT.war
-COPY --from=build-hapi --chown=1001:1001 /tmp/hapi-fhir-jpaserver-starter/opentelemetry-javaagent.jar /app
+# COPY --chown=1001:1001 catalina.properties /opt/bitnami/tomcat/conf/catalina.properties
+# COPY --chown=1001:1001 server.xml /opt/bitnami/tomcat/conf/server.xml
+RUN mkdir -p /target && mkdir -p /data/arpah/
+
+COPY catalina.properties /opt/bitnami/tomcat/conf/catalina.properties
+COPY server.xml /opt/bitnami/tomcat/conf/server.xml
+COPY --from=build-hapi /tmp/hapi-fhir-jpaserver-starter/target/ROOT.war /opt/bitnami/tomcat/webapps/ROOT.war
+COPY --from=build-hapi /tmp/hapi-fhir-jpaserver-starter/opentelemetry-javaagent.jar /app
 
 ENV ALLOW_EMPTY_PASSWORD=yes
 
