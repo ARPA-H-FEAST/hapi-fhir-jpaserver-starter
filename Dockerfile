@@ -32,7 +32,7 @@ RUN rm -rf /opt/bitnami/tomcat/webapps/ROOT && \
 
 # COPY --chown=1001:1001 catalina.properties /opt/bitnami/tomcat/conf/catalina.properties
 # COPY --chown=1001:1001 server.xml /opt/bitnami/tomcat/conf/server.xml
-RUN mkdir -p /target && mkdir -p /data/arpah/
+RUN mkdir -p /target && mkdir -p /data/arpah/db/
 
 COPY catalina.properties /opt/bitnami/tomcat/conf/catalina.properties
 COPY server.xml /opt/bitnami/tomcat/conf/server.xml
